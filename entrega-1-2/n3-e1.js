@@ -1,20 +1,5 @@
 // Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
 
-
-// class Car {
-//     constructor(name, year) {
-//         this.name = name;
-//         this.year = year;
-//     }
-//     explain(name, year) {
-//         console.log(name, year);
-//     }
-// }
-
-// (function () {
-//     new Car().explain("Audi", "1998");
-// })();
-
 Animal = function () { throw "abstract class!" }
 Animal.prototype.name = "";
 Animal.prototype.sound = "";
