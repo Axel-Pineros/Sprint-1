@@ -7,7 +7,7 @@ function myDisplayer(some) {
 const myPromise = new Promise(function (resolve, reject) {
     const x = 1;
 
-    if (x == 0) {
+    if (x === 0) {
         resolve("Ok");
     } else {
         reject("Error");
