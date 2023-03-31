@@ -4,9 +4,9 @@ class Persona {
     constructor(nom) {
         this.nom = nom;
     }
-    dirNom(nom) {
-        console.log(nom);
+    dirNom() {
+        console.log(this.nom);
     }
 }
 
-new Persona().dirNom("Pepe");
+new Persona("Pepe").dirNom();
