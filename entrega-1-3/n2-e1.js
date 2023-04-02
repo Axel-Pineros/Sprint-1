@@ -21,3 +21,24 @@ let salaries = [{
     id: 3,
     salary: 2000
 }];
+
+const getEmployee = () => {
+    return new Promise((resolve, reject) => {
+        // Canvia el valor d'aquesta variable per obtenir el nom de l'employee amb un id igual al número de la variable
+        const idSearch = 3;
+        const employeeObject = employees.find(item => item.id === idSearch);
+        if (employeeObject !== undefined) {
+            resolve(employeeObject.name);
+        } else {
+            reject("¡Aquest id no té associat cap employee!");
+        }
+    });
+}
+
+getEmployee()
+    .then((resultado) => {
+        console.log(resultado);
+    })
+    .catch((error) => {
+        console.error(error);
+    });

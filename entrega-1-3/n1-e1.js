@@ -8,9 +8,9 @@ const myPromise = new Promise(function (resolve, reject) {
     const x = 1;
 
     if (x === 0) {
-        resolve("Ok");
+        resolve("Missatge d'èxit");
     } else {
-        reject("Error");
+        reject("Missatge d'error");
     }
 });
 
@@ -21,7 +21,3 @@ myPromise
     .catch(
         function (error) { myDisplayer(error); }
     );
-
-function promiseResult(e) {
-    console.log(e);
-}
