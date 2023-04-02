@@ -1,0 +1,1 @@
+// Força i captura tants errors com puguis dels nivells 1 i 2.
