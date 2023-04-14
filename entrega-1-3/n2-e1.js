@@ -27,7 +27,7 @@ const getEmployee = () => {
         // Canvia el valor d'aquesta variable per obtenir el nom de l'employee amb un id igual al número de la variable
         const idSearch = 3;
         const employeeObject = employees.find(item => item.id === idSearch);
-        if (employeeObject !== undefined) {
+        if (employeeObject) {
             resolve(employeeObject.name);
         } else {
             reject("¡Aquest id no té associat cap employee!");

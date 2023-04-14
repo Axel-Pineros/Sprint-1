@@ -27,7 +27,7 @@ const idSearch = 1;
 
 const getSalary = (e) => {
     return new Promise((resolve, reject) => {
-        if (e !== undefined) {
+        if (e) {
             let employeeId = e.id;
             let objectSalaries = salaries.find(item => item.id === employeeId);
             resolve(objectSalaries.salary);
