@@ -39,30 +39,48 @@ async function resultatFinal(e) {
         });
 }
 
-// Canvia el valor d'aquesta variable per obtenir el nom de l'employee amb un id igual al número de la variable
-const idSearch = 3;
-
 const getEmployee = (e) => {
+    if (e === null || e === undefined || e === '') {
+        throw new Error(`No s'ha cercat res`);
+    }
+    if (typeof e !== "number") {
+        throw new Error(`S'ha de cercar un número`);
+    }
+    if (e < 1) {
+        throw new Error(`Els id comencen en 1`);
+    }
+
     return new Promise((resolve, reject) => {
-        const employeeObject = employees.find(item => item.id === e);
-        if (employeeObject !== undefined) {
-            resolve(`El nom de l'employee és ${employeeObject.name}`);
-        } else {
-            reject("¡Aquest id no té associat cap nom!");
+        const employeeFound = employees.find(item => item.id === e);
+        if (employeeFound) {
+            resolve(`El nom de l'employee és ${employeeFound.name}`);
+        }
+        else {
+            reject(`Aquest id no té associat cap nom!`);
         }
     });
 }
 
 const getSalary = (e) => {
+    if (e === null || e === undefined || e === '') {
+        throw new Error(`No s'ha cercat res`);
+    }
+    if (typeof e !== "number") {
+        throw new Error(`S'ha de cercar un número`);
+    }
+    if (e < 1) {
+        throw new Error(`Els id comencen en 1`);
+    }
     return new Promise((resolve, reject) => {
-        const employeeObject = employees.find(item => item.id === e);
-        if (employeeObject !== undefined) {
-            const objectSalaries = salaries.find(item => item.id === e);
-            resolve(`${employeeObject.name} té un salari de ${objectSalaries.salary}`);
+        const employeeFound = employees.find(item => item.id === e);
+        if (employeeFound) {
+            const employeeSalary = salaries.find(item => item.id === e);
+            resolve(`${employeeFound.name} té un salari de ${employeeSalary.salary}`);
         } else {
-            reject("¡Aquest id no té associat cap salari!");
+            reject("Aquest id no té associat cap salari!");
         }
     });
 }
 
-resultatFinal(idSearch);
+resultatFinal(2);
+
