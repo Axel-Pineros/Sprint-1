@@ -22,11 +22,9 @@ let salaries = [{
     salary: 2000
 }];
 
-const getEmployee = () => {
+const getEmployee = (e) => {
     return new Promise((resolve, reject) => {
-        // Canvia el valor d'aquesta variable per obtenir el nom de l'employee amb un id igual al número de la variable
-        const idSearch = 3;
-        const employeeObject = employees.find(item => item.id === idSearch);
+        const employeeObject = employees.find(item => item.id === e);
         if (employeeObject) {
             resolve(employeeObject.name);
         } else {
@@ -35,10 +33,12 @@ const getEmployee = () => {
     });
 }
 
-getEmployee()
+getEmployee(2)
     .then((resultado) => {
-        console.log(resultado);
+        return resultado;
     })
     .catch((error) => {
         console.error(error);
     });
+
+module.exports = getEmployee;

@@ -22,9 +22,6 @@ let salaries = [{
     salary: 2000
 }];
 
-// Canvia el valor d'aquesta variable per obtenir el salari corresponent a l'id del nombre de la variable.
-const idSearch = 1;
-
 const getSalary = (e) => {
     return new Promise((resolve, reject) => {
         if (e) {
@@ -37,10 +34,12 @@ const getSalary = (e) => {
     });
 }
 
-getSalary(employees[idSearch-1])
+getSalary(employees[0])
     .then((resultado) => {
-        console.log(resultado);
+        return resultado;
     })
     .catch((error) => {
         console.error(error);
     });
+
+module.exports = getSalary;
