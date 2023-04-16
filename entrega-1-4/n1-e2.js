@@ -14,7 +14,7 @@ async function finalFunction(e) {
 function numberPlus5(e) {
     return new Promise(resolve => {
         setTimeout(() => {
-            resolve(e+5);
+            resolve(e + 5);
         }, 2000);
     });
 }
