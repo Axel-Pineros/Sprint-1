@@ -2,19 +2,19 @@
 
 const fs = require('fs');
 const crypto = require('crypto');
-const algorithm = 'aes-256-cbc';
-const key = crypto.randomBytes(32);
+const algorithm = 'aes-192-cbc';
+const key = crypto.randomBytes(24);
 const iv = crypto.randomBytes(16);
 
-// function encrypt(text) {
-//     let cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
-//     let encrypted = cipher.update(text);
-//     encrypted = Buffer.concat([encrypted, cipher.final()]);
-//     return {
-//         iv: iv.toString('hex'),
-//         encryptedData: encrypted.toString('hex')
-//     };
-// }
+function encrypt(text) {
+    let cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
+    let encrypted = cipher.update(text);
+    encrypted = Buffer.concat([encrypted, cipher.final()]);
+    return {
+        iv: iv.toString('hex'),
+        encryptedData: encrypted.toString('hex')
+    };
+}
 
 // var encrypted = encrypt("Hello World!");
 
@@ -27,7 +27,7 @@ fs.readFile('fitxer-hexadecimal-crypto.txt', 'hex', (err, data) => {
         return;
     }
 
-    fs.appendFile('fitxer-hexadecimal-desc.txt', decrypt(cryptoHex), (err) => {
+    fs.appendFile('fitxer-hexadecimal-descrypto.txt', decrypt(cryptoHex), (err) => {
         if (err) {
             console.error(err);
             return;
@@ -36,9 +36,10 @@ fs.readFile('fitxer-hexadecimal-crypto.txt', 'hex', (err, data) => {
 });
 
 function decrypt(text) {
-    let iv = Buffer.from(text, 'utf8');
+    let iv = crypto.randomBytes(16);
     let encryptedText = Buffer.from(text, 'utf8');
     let decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), iv);
+    decipher.setAutoPadding(false);
     let decrypted = decipher.update(encryptedText);
     decrypted = Buffer.concat([decrypted, decipher.final()]);
     return decrypted.toString('utf8');

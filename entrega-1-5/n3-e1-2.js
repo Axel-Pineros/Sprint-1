@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const crypto = require('crypto');
-const algorithm = 'aes-256-cbc';
-const key = crypto.randomBytes(32);
+const algorithm = 'aes-192-cbc';
+const key = crypto.randomBytes(24);
 const iv = crypto.randomBytes(16);
 
 fs.readFile('fitxer-hexadecimal.txt', 'hex', (err, data) => {
@@ -42,17 +42,50 @@ function encrypt(text) {
     let cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
     let encrypted = cipher.update(text);
     encrypted = Buffer.concat([encrypted, cipher.final()]);
-    // let encryptedData = encrypted.toString('hex');
-    // return encryptedData;
     return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
 }
 
-fs.unlink('fitxer-hexadecimal.txt',(err) => {
-    if(err) throw err;
-    console.log('fitxer-hexadecimal.txt was deleted');
-});
+// fs.unlink('fitxer-hexadecimal.txt',(err) => {
+//     if(err) throw err;
+//     console.log('fitxer-hexadecimal.txt was deleted');
+// });
 
-fs.unlink('fitxer-base64.txt',(err) => {
-    if(err) throw err;
-    console.log('fitxer-base64.txt was deleted');
-});
+// fs.unlink('fitxer-base64.txt',(err) => {
+//     if(err) throw err;
+//     console.log('fitxer-base64.txt was deleted');
+// });
+
+// fs.readFile('fitxer-hexadecimal.txt', 'hex', (err, data) => {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     }
+
+//     fs.appendFile('fitxer-hexadecimal-crypto.txt', encrypt(data), (err) => {
+//         if (err) {
+//             console.error(err);
+//             return;
+//         }
+//     });
+// });
+
+// fs.readFile('fitxer-base64.txt', 'base64', (err, data) => {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     }
+
+//     fs.appendFile('fitxer-base64-crypto.txt', encrypt(data), (err) => {
+//         if (err) {
+//             console.error(err);
+//             return;
+//         }
+//     });
+// });
+
+// function encrypt(text) {
+//     let cipher = crypto.createCipheriv(algorithm, key, iv);
+//     let encrypted = cipher.update(text, "utf-8", "hex");
+//     encrypted += cipher.final('hex');
+//     return encrypted;
+// }

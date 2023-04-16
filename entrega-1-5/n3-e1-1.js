@@ -7,9 +7,8 @@ fs.readFile('fitxer.txt', 'utf8', (err, data) => {
         console.error(err);
         return;
     }
-    const fileContent = data;
-    const encodedHex = Buffer.from(fileContent).toString('hex');
-    const encodedBase64 = Buffer.from(fileContent).toString('base64');
+    const encodedHex = Buffer.from(data).toString('hex');
+    const encodedBase64 = Buffer.from(data).toString('base64');
     fs.appendFile('fitxer-hexadecimal.txt', encodedHex, (err) => {
         if (err) {
             console.error(err);

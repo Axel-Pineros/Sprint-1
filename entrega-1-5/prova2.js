@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const crypto = require('crypto');
-const algorithm = 'aes-256-cbc';
-const key = crypto.randomBytes(32);
+const algorithm = 'aes-192-cbc';
+const key = crypto.randomBytes(24);
 const iv = crypto.randomBytes(16);
 
 let myPromise = new Promise(function (myResolve) {
