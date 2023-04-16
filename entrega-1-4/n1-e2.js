@@ -1,17 +1,17 @@
 // Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
 
-async function numberPlus5(e) {
+async function finalFunction(e) {
     if (e === null || e === undefined || e === '') {
         throw new Error(`No s'ha introduit cap valor`);
     }
-    if (e !== 'number') {
+    if (typeof e !== "number") {
         throw new Error(`El valor introduit no és un número`);
     }
-    const number = await sayHello(e);
+    const number = await numberPlus5(e);
     console.log(number);
 }
 
-function sayHello(e) {
+function numberPlus5(e) {
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(e+5);
@@ -19,4 +19,4 @@ function sayHello(e) {
     });
 }
 
-numberPlus5(2);
+finalFunction(2);

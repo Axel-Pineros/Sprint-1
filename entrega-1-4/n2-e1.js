@@ -4,7 +4,7 @@ async function doubleNumber(e) {
     if (e === null || e === undefined || e === '') {
         throw new Error(`No s'han introduit cap valor`);
     }
-    if (e !== 'number') {
+    if (typeof e !== "number") {
         throw new Error(`Cal introduir un número`);
     }
     return new Promise(resolve => {
