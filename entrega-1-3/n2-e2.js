@@ -29,7 +29,7 @@ const getSalary = (e) => {
             let objectSalaries = salaries.find(item => item.id === employeeId);
             resolve(objectSalaries.salary);
         } else {
-            reject("¡Aquest número no té associat cap employee!");
+            reject("¡Aquest employee no existeix!");
         }
     });
 }
@@ -39,7 +39,7 @@ getSalary(employees[0])
         return resultado;
     })
     .catch((error) => {
-        console.error(error);
+        return error;
     });
 
-module.exports = getSalary;
+module.exports = { getSalary, salaries, employees };

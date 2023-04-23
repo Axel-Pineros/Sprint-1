@@ -1,25 +1,21 @@
 // Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
 
-Animal = function () { throw "abstract class!" }
-Animal.prototype.name = "";
-Animal.prototype.sound = "";
-Animal.prototype.say = function () {
-    console.log(this.name + " says: " + this.sound);
+class Animal {
+    constructor() {
+        if (new.target === Animal) {
+            throw new TypeError("Això és una classe abstracta. No es pot instanciar");
+        }
+    }
 }
 
-Cat = function () {
-    this.name = "Cat";
-    this.sound = "meow";
+const createAnimal = (name, race) => {
+    let animal = Object.create(Animal.prototype);
+    animal.name = name;
+    animal.race = race;
+    return animal;
 }
 
-Dog = function () {
-    this.name = "Dog";
-    this.sound = "woof";
-}
+createAnimal("cat", "ragdoll");
+createAnimal("cat", "persian");
 
-Cat.prototype = Object.create(Animal.prototype);
-Dog.prototype = Object.create(Animal.prototype);
-
-new Cat().say();
-new Dog().say();
-new Animal().say();
+module.exports = { Animal, createAnimal };

@@ -11,25 +11,10 @@ let employees = [{
     name: 'Jeff Bezos'
 }];
 
-let salaries = [{
-    id: 1,
-    salary: 4000
-}, {
-    id: 2,
-    salary: 1000
-}, {
-    id: 3,
-    salary: 2000
-}];
-
 const getEmployee = (e) => {
     return new Promise((resolve, reject) => {
         const employeeObject = employees.find(item => item.id === e);
-        if (employeeObject) {
-            resolve(employeeObject.name);
-        } else {
-            reject("¡Aquest id no té associat cap employee!");
-        }
+        employeeObject ? resolve(employeeObject.name) : reject("¡Aquest id no té associat cap employee!");
     });
 }
 
@@ -38,7 +23,7 @@ getEmployee(2)
         return resultado;
     })
     .catch((error) => {
-        console.error(error);
+        return error;
     });
 
 module.exports = getEmployee;

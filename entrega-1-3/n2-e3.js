@@ -28,17 +28,14 @@ const idSearch = 3;
 const getEmployee = () => {
     return new Promise((resolve, reject) => {
         const employeeObject = employees.find(item => item.id === idSearch);
-        if (employeeObject !== undefined) {
-            resolve(`El nom de l'employee és ${employeeObject.name}`);
-        } else {
-            reject("¡Aquest id no té associat cap nom!");
-        }
-    });
-}
+        employeeObject ? resolve(`El nom de l'employee és ${employeeObject.name}`) : reject("¡Aquest id no té associat cap nom!");
+    }
+    )
+};
 
 const getSalary = (e) => {
     return new Promise((resolve, reject) => {
-        if (e !== undefined) {
+        if (e) {
             let employeeId = e.id;
             let objectSalaries = salaries.find(item => item.id === employeeId);
             resolve(`${e.name} té un salari de ${objectSalaries.salary}`);

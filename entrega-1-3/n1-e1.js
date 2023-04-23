@@ -6,13 +6,8 @@ function myDisplayer(some) {
 
 const myPromise = new Promise(function (resolve, reject) {
     const x = 1;
-
-    if (x === 0) {
-        resolve("Missatge d'èxit");
-    } else {
-        reject("Missatge d'error");
-    }
-});
+    x === 0 ? resolve("Missatge d'èxit") : reject("Missatge d'error");
+})
 
 myPromise
     .then(
