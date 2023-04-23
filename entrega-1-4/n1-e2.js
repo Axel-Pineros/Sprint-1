@@ -8,7 +8,7 @@ async function finalFunction(e) {
         throw new Error(`El valor introduit no és un número`);
     }
     const number = await numberPlus5(e);
-    console.log(number);
+    return number;
 }
 
 function numberPlus5(e) {
@@ -20,3 +20,5 @@ function numberPlus5(e) {
 }
 
 finalFunction(2);
+
+module.exports = finalFunction;

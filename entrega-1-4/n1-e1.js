@@ -25,17 +25,17 @@ let salaries = [{
 async function resultatFinal(e) {
     getEmployee(e).
         then((resultado) => {
-            console.log(resultado);
+            return resultado;
         })
         .catch((error) => {
-            console.error(error);
+            return error;
         });
     getSalary(e)
         .then((resultado) => {
-            console.log(resultado);
+            return resultado;
         })
         .catch((error) => {
-            console.error(error);
+            return error;
         });
 }
 
@@ -52,14 +52,11 @@ const getEmployee = (e) => {
 
     return new Promise((resolve, reject) => {
         const employeeFound = employees.find(item => item.id === e);
-        if (employeeFound) {
-            resolve(`El nom de l'employee és ${employeeFound.name}`);
-        }
-        else {
-            reject(`Aquest id no té associat cap nom!`);
-        }
-    });
-}
+        employeeFound ? resolve(`El nom de l'employee és ${employeeFound.name}`) : reject(`Aquest id no té associat cap nom!`);
+    }
+    )
+};
+
 
 const getSalary = (e) => {
     if (e === null || e === undefined || e === '') {
@@ -84,3 +81,4 @@ const getSalary = (e) => {
 
 resultatFinal(2);
 
+module.exports = { getEmployee, getSalary };
