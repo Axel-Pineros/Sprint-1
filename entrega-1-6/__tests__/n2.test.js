@@ -5,16 +5,34 @@ describe(`Nivell 2`, () => {
     const { doubleNumber, suma3numeros } = require('../../entrega-1-4/n2-e1.js');
     describe('Funcions doubleNumber() i suma3numeros()', () => {
 
-        describe('doubleNumber()', () => {
+        jest.useFakeTimers();
 
-            test('doubleNumber(5) retorna 10', async () => {
-
-                const result = doubleNumber(5);
-                jest.useFakeTimers();
-                jest.runOnlyPendingTimers();
-                const value = await result;
-                expect(value).toBe(10);
+        describe('doubleNumber', () => {
+            test('doubleNumber(2) retorna 4', async () => {
+                const promise = doubleNumber(2);
+                jest.runAllTimers();
+                const result = await promise;
+                expect(result).toBe(4);
             });
+        })
+
+        jest.useFakeTimers();
+
+        describe('suma3numeros', () => {
+            test(`Introduir null,'' o undefined retornarà l'error "No s'han introduit tots els valors"`, async () => {
+                await expect(suma3numeros(null, 2, 3)).rejects.toThrow(`No s'han introduit tots els valors`);
+            });
+
+            test(`Introduir un valor no numèric retornarà l'error "No s'han introduit 3 números"`, async () => {
+                await expect(suma3numeros('1', 2, 3)).rejects.toThrow(`No s'han introduit 3 números`);
+            });
+
+            // it('should return the sum of the doubled numbers', async () => {
+            //     const promise = suma3numeros(1, 2, 3);
+            //     jest.runAllTimers();
+            //     const result = await promise;
+            //     expect(result).toBe(12);
+            // });
         });
     });
 
