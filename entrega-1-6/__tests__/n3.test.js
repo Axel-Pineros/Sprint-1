@@ -58,7 +58,7 @@ describe('Nivell 3', () => {
 
     // Utilitzant com a base l'exercici Async / Await, crea tests que forcin errors de funcionament i verifiqui que els errors llançats són els esperats.
 
-    // Aquí hi ha només el testing del primer exercici Async/Await, el segon està testeigat en el l'arxiu n1.test.js i el tercer no està resolt encara.
+    // Aquí hi ha només el testing del primer exercici Async/Await, el segon està testeigat en el l'arxiu n1.test.js i el tercer en l'arxiu n2.test.js.
 
     describe(`Funcions getEmployee() i getSalary()`, () => {
         const { getEmployee, getSalary } = require('../../entrega-1-4/n1-e1.js');
