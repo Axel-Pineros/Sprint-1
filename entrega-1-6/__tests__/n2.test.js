@@ -27,7 +27,7 @@ describe(`Nivell 2`, () => {
                 await expect(suma3numeros('1', 2, 3)).rejects.toThrow(`No s'han introduit 3 números`);
             });
 
-            // it('should return the sum of the doubled numbers', async () => {
+            // test('should return the sum of the doubled numbers', async () => {
             //     const promise = suma3numeros(1, 2, 3);
             //     jest.runAllTimers();
             //     const result = await promise;
