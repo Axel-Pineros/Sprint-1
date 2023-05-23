@@ -17,10 +17,7 @@ async function suma3numeros(e, r, t) {
     if (typeof e !== "number" || typeof r !== "number" || typeof t !== "number") {
         throw new Error(`No s'han introduit 3 números`);
     }
-
-    const num1 = await doubleNumber(e);
-    const num2 = await doubleNumber(r);
-    const num3 = await doubleNumber(t);
+    const[num1,num2,num3] = await Promise.all([doubleNumber(e),doubleNumber(r),doubleNumber(t)]);
     return num1 + num2 + num3;
 }
 

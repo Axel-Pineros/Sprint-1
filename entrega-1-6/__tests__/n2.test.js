@@ -14,11 +14,15 @@ describe(`Nivell 2`, () => {
                 const result = await promise;
                 expect(result).toBe(4);
             });
-        })
-
-        jest.useFakeTimers();
-
+        });
         describe('suma3numeros', () => {
+            test('suma3numeros(1,2,3) retorna 12', async () => {
+                const promise = suma3numeros(1, 2, 3);
+                jest.runAllTimers();
+                const result = await promise;
+                expect(result).toBe(12);
+            });
+
             test(`Introduir null,'' o undefined retornarà l'error "No s'han introduit tots els valors"`, async () => {
                 await expect(suma3numeros(null, 2, 3)).rejects.toThrow(`No s'han introduit tots els valors`);
             });
@@ -26,13 +30,6 @@ describe(`Nivell 2`, () => {
             test(`Introduir un valor no numèric retornarà l'error "No s'han introduit 3 números"`, async () => {
                 await expect(suma3numeros('1', 2, 3)).rejects.toThrow(`No s'han introduit 3 números`);
             });
-
-            // test('should return the sum of the doubled numbers', async () => {
-            //     const promise = suma3numeros(1, 2, 3);
-            //     jest.runAllTimers();
-            //     const result = await promise;
-            //     expect(result).toBe(12);
-            // });
         });
     });
 
